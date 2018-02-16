@@ -54,13 +54,13 @@ void loop(){
  affiche=true;
  while(1){
   while ( Serial.available()>0 ){
-// getcodech();
+ getcodech();
  StepperY.step(sy*stepy);              
  StepperZ.step(sz*stepz);
  if (sg==2 || sg==3){
     cercle(sx, sy);
  }else if(sg==0 || sg==1){
- /*for(int i=0; i<tour; i++){
+ for(int i=0; i<tour; i++){
      interx = analogRead(A7);
     if(interx> 600){
       if(sx>0){
@@ -72,14 +72,14 @@ void loop(){
     }else{
      StepperX.step(sx*stepx);
     } 
-   // StepperX.step(sx*stepx);
+    StepperX.step(sx*stepx);
   }   
   for(int i=0; i<tour; i++){      
    StepperY.step(sy*stepy); 
   }
  for(int i=0; i<tour; i++){              
    StepperZ.step(sz*stepz);
- }*/
+ }
  }
  } 
  
@@ -95,10 +95,10 @@ void loop(){
  sy=0;
  sz=0;
 }
- //Serial.flush();     
+ Serial.flush();     
 }
 
-/*void getcodech(){
+void getcodech(){
   boolean com;
   char ch;
   int av;
@@ -116,7 +116,7 @@ void loop(){
     Serial.println(ch);
    if(ch=='(' || ch==';'){
     com=true;
-    //Serial.flush();
+    Serial.flush();
     return NULL; 
    }
    if(ch==' ' || ch=='\r' ||ch=='\n' || Serial.available() == 0 ){
@@ -202,7 +202,7 @@ Serial.println(av);
    lc=0;
   }
  //Serial.flush();    
-}*/
+}
 
 void cercle(float x1, float y1){ 
   x1 = (int)(x1*60);
